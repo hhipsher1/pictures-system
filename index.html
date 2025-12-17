@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lubricator Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden; /* Completely prevents unwanted scrolling */
+      }
+
+      body {
+        background: #000; /* Fallback black background color */
+      }
+
+      #app {
+        background-color: #000000;
+        background-image: url("https://i.imgur.com/CjiK2Ns.png");
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: scroll; /* Changed from fixed to scroll */
+        min-height: 100vh;
+      }
+
+      .question-slide {
+        display: none;
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      .question-slide.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .progress-bar {
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .choice-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .choice-card:hover {
+        transform: translateY(-4px) scale(1.02);
+      }
+
+      .choice-card.selected {
+        transform: translateY(-2px);
+      }
+
+      .gradient-border-btn {
+        position: relative;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+      }
+
+      .gradient-border-btn::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 16px;
+        padding: 3px;
+        background: linear-gradient(90deg, #f26532, #2a2a2a);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+
+      .gradient-border-btn:hover::before {
+        box-shadow: 0 0 20px rgba(242, 101, 50, 0.6);
+      }
+
+      /* NEW FIX: Ensure question cards and other slides do not overflow */
+      .question-slide {
+        height: auto;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body class="h-full">
+    <div id="app" class="w-full h-full"></div>
+    <script>
+      /* Your existing JavaScript remains unchanged */
+    </script>
+  </body>
+</html>
